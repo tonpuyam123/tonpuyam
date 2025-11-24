@@ -1,0 +1,253 @@
+/* =========================================
+   Base & Global
+========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;            /* required for sticky footer */
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #222;
+  background-color: #f8fafc;
+
+  display: flex;
+  flex-direction: column;   /* enables sticky footer */
+}
+
+main {
+  flex: 1;  /* pushes footer to bottom */
+}
+
+a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* =========================================
+   Header & Navigation
+========================================= */
+
+header {
+  background: #0f172a;
+  color: #e5e7eb;
+  padding: 1rem 0;
+}
+
+.nav-container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #e5e7eb;
+}
+
+nav a {
+  margin-left: 1rem;
+  font-size: 0.9rem;
+  color: #e5e7eb;
+}
+
+nav a:hover {
+  color: #93c5fd;
+}
+
+/* =========================================
+   Hero Section
+========================================= */
+
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.hero-text {
+  flex: 1 1 260px;
+}
+
+.hero h1 {
+  margin-top: 0;
+  font-size: 1.8rem;
+}
+
+.hero h2 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #475569;
+}
+
+.hero p {
+  margin-top: 0.5rem;
+}
+
+/* =========================================
+   Rectangular Photo with Blended Edges
+========================================= */
+
+.hero img {
+  width: 360px;       /* rectangular width */
+  height: auto;       /* keeps full image visible */
+  display: block;
+  object-fit: cover;  /* ensures no distortion */
+
+  /* Fading edges (invisible frame effect) */
+  mask-image: radial-gradient(ellipse 140% 120% at center, black 78%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 140% 120% at center, black 78%, transparent 100%);
+
+  border: none;       /* no frame */
+  border-radius: 0;   /* keep rectangular */
+}
+
+/* =========================================
+   Sections
+========================================= */
+
+main {
+  max-width: 980px;
+  margin: 1.5rem auto 2.5rem;
+  padding: 0 1rem;
+}
+
+section {
+  margin-top: 1.8rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+section h2 {
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+
+/* =========================================
+   Lists
+========================================= */
+
+ul {
+  padding-left: 1.2rem;
+}
+
+li {
+  margin-bottom: 0.3rem;
+}
+
+/* =========================================
+   Grid layout (if used later)
+========================================= */
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+}
+
+/* =========================================
+   Meta small text
+========================================= */
+
+.meta {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+/* =========================================
+   Footer (sticky)
+========================================= */
+
+footer {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  padding: 1rem 0 1.5rem;
+  background: transparent;
+}
+
+/* =========================================
+   CV / Academic Profiles Section
+========================================= */
+
+.profiles-container {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 0.9rem 1rem;
+  background-color: #f9fafb;
+  margin-top: 0.5rem;
+}
+
+.profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.4rem;
+}
+
+.profile-card {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid #cbd5f5;
+  background-color: #ffffff;
+  font-size: 0.9rem;
+  color: #111827;
+  text-decoration: none;
+
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.profile-card:hover {
+  background-color: #e0ebff;
+  border-color: #6366f1;
+  transform: translateY(-1px);
+}
+
+.profile-card .icon {
+  font-size: 1.1rem;
+  margin-right: 0.4rem;
+}
+p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+@media (max-width: 600px) {
+  .hero {
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .hero img {
+    max-width: 240px;
+    margin: 0 auto 1rem;
+  }
+
+  nav a {
+    font-size: 0.85rem;
+    margin-left: 0.6rem;
+  }
+
+  main {
+    margin: 1rem auto 2rem;
+    padding: 0 0.75rem;
+  }
+}

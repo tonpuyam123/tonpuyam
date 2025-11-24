@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Research | Tony</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="logo">Tony</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="publications.html">Publications</a>
+        <a href="conferences.html">Conferences</a>
+        <a href="awards.html">Awards</a>
+        <a href="about.html">About Me</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>Current Research</h2>
+      <p>
+        The global cultivation of Cavendish bananas is severely threatened by Fusarium wilt caused by the soil-borne
+        fungus <em>Fusarium oxysporum</em> f. sp. <em>cubense</em> tropical race 4 (TR4). Although breeding TR4-resistant
+        cultivars is constrained by triploidy and sterility, the Taiwan Banana Research Institute (TBRI) has developed
+        somaclonal variants that exhibit stable resistance to TR4. However, the precise mutations and molecular mechanisms
+        underlying this resistance remain unclear.
+      </p>
+      <p>
+        My research aims to elucidate the genetic basis of TR4 resistance in these TBRI somaclonal variants by 
+        identifying causal somatic mutations and key regulatory genes. We discovered that highly resistant variants share 
+        common chromosomal deletions that reduce gene copy number and expression. Within these deleted regions, we 
+        identified candidate susceptibility genes belonging to the <em>Autoinhibited Ca<sup>2+</sup>-ATPase</em> 
+        (<em>ACA</em>) family.
+      </p>
+      <p>
+        Using a virus-induced gene silencing (VIGS) system, we demonstrated that silencing these 
+        <em>ACA</em> genes in susceptible bananas elevates salicylic acid (SA) marker gene expression and attenuates 
+        TR4 disease symptoms. These findings suggest that reduced <em>ACA</em> expression enhances SA-mediated immunity 
+        and contributes to durable resistance to Fusarium wilt.
+      </p>
+      <p>
+        Ongoing work includes the development of CRISPR-edited lines targeting these <em>ACA</em> genes for stable 
+        modification and the generation of transgenic <em>Arabidopsis</em> lines to investigate their subcellular 
+        localization. Future directions will test whether silencing or knockout of these genes in other susceptible 
+        banana cultivars can similarly confer resistance to TR4.
+      </p>
+    </section>
+
+    <section>
+      <h2>Research Interests</h2>
+      <ul>
+        <li>Molecular basis of disease resistance in crops</li>
+        <li><em>Fusarium</em> wilt TR4 resistance mechanisms in banana</li>
+        <li>Plant&ndash;microbe interactions and host immune signaling</li>
+        <li>Functional genomics, transcriptomics, and structural variation</li>
+        <li>Genome editing and marker development for breeding</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    &copy; <span id="year"></span> Tony
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
