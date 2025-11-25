@@ -32,16 +32,57 @@
 
   <main>
 
-    <!-- Centered Photo + Name -->
+    <!-- Image Slider Section -->
     <section style="text-align:center;">
-      <img src="Tony2.jpg" alt="Tondonba Puyam" style="
+
+      <div class="slider-container" style="
+        position: relative;
         max-width: 260px;
-        height: auto;
-        border-radius: 12px;
-        border: none;
-        display: block;
         margin: 0 auto 1rem;
+        overflow: hidden;
+        border-radius: 12px;
       ">
+        
+        <div class="slider-wrapper" style="
+          display: flex;
+          transition: transform 0.4s ease-in-out;
+        ">
+
+          <img src="Tony2.jpg" alt="Tondonba Puyam" style="width:100%; flex-shrink:0;">
+          <img src="a.jpg" alt="Image A" style="width:100%; flex-shrink:0;">
+          <img src="b.jpg" alt="Image B" style="width:100%; flex-shrink:0;">
+
+        </div>
+
+        <!-- Arrows -->
+        <button id="prevBtn" style="
+          position:absolute; 
+          left:5px; 
+          top:50%; 
+          transform:translateY(-50%); 
+          background:rgba(0,0,0,0.5); 
+          border:none; 
+          color:white; 
+          padding:5px 10px; 
+          border-radius:5px;
+          cursor:pointer;
+        ">&lt;</button>
+
+        <button id="nextBtn" style="
+          position:absolute; 
+          right:5px; 
+          top:50%; 
+          transform:translateY(-50%); 
+          background:rgba(0,0,0,0.5); 
+          border:none; 
+          color:white; 
+          padding:5px 10px; 
+          border-radius:5px;
+          cursor:pointer;
+        ">&gt;</button>
+
+      </div>
+
     </section>
 
     <!-- About Me -->
@@ -111,7 +152,46 @@
   </footer>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    // Simple slider logic
+    const slider = document.querySelector('.slider-wrapper');
+    const prevBtn = document.querySelector('#prevBtn');
+    const nextBtn = document.querySelector('#nextBtn');
+
+    let index = 0;
+    const totalImages = 3; // Tony2.jpg, a.jpg, b.jpg
+
+    function showSlide(i) {
+      slider.style.transform = `translateX(-${i * 100}%)`;
+    }
+
+    nextBtn.onclick = () => {
+      index = (index + 1) % totalImages;
+      showSlide(index);
+    };
+
+    prevBtn.onclick = () => {
+      index = (index - 1 + totalImages) % totalImages;
+      showSlide(index);
+    };
+
+    // Mobile swipe support
+    let startX = 0;
+
+    slider.addEventListener("touchstart", e => {
+      startX = e.touches[0].clientX;
+    });
+
+    slider.addEventListener("touchend", e => {
+      let endX = e.changedTouches[0].clientX;
+
+      if (startX - endX > 50) {
+        // swipe left -> next
+        nextBtn.onclick();
+      } else if (endX - startX > 50) {
+        // swipe right -> previous
+        prevBtn.onclick();
+      }
+    });
   </script>
 
 </body>
