@@ -37,48 +37,69 @@
 
       <div class="slider-container" style="
         position: relative;
-        max-width: 260px;
-        margin: 0 auto 1rem;
+        width: 100%;
+        max-width: 480px;   /* larger display, prevents squeezing */
+        margin: 0 auto 1.5rem;
         overflow: hidden;
         border-radius: 12px;
       ">
-        
+
         <div class="slider-wrapper" style="
           display: flex;
           transition: transform 0.4s ease-in-out;
+          width: 100%;
         ">
 
-          <img src="Tony2.jpg" alt="Tondonba Puyam" style="width:100%; flex-shrink:0;">
-          <img src="a.jpeg" alt="Image A" style="width:100%; flex-shrink:0;">
-          <img src="b.jpeg" alt="Image B" style="width:100%; flex-shrink:0;">
+          <img src="Tony2.jpg" alt="Tondonba Puyam" style="
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            flex-shrink: 0;
+          ">
+
+          <img src="a.jpg" alt="Image A" style="
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            flex-shrink: 0;
+          ">
+
+          <img src="b.jpg" alt="Image B" style="
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            flex-shrink: 0;
+          ">
 
         </div>
 
         <!-- Arrows -->
         <button id="prevBtn" style="
           position:absolute; 
-          left:5px; 
+          left:10px; 
           top:50%; 
           transform:translateY(-50%); 
-          background:rgba(0,0,0,0.5); 
+          background:rgba(0,0,0,0.45); 
           border:none; 
           color:white; 
-          padding:5px 10px; 
-          border-radius:5px;
+          padding:8px 12px; 
+          border-radius:6px;
           cursor:pointer;
+          font-size:18px;
         ">&lt;</button>
 
         <button id="nextBtn" style="
           position:absolute; 
-          right:5px; 
+          right:10px; 
           top:50%; 
           transform:translateY(-50%); 
-          background:rgba(0,0,0,0.5); 
+          background:rgba(0,0,0,0.45); 
           border:none; 
           color:white; 
-          padding:5px 10px; 
-          border-radius:5px;
+          padding:8px 12px; 
+          border-radius:6px;
           cursor:pointer;
+          font-size:18px;
         ">&gt;</button>
 
       </div>
@@ -185,10 +206,8 @@
       let endX = e.changedTouches[0].clientX;
 
       if (startX - endX > 50) {
-        // swipe left -> next
         nextBtn.onclick();
       } else if (endX - startX > 50) {
-        // swipe right -> previous
         prevBtn.onclick();
       }
     });
@@ -196,4 +215,3 @@
 
 </body>
 </html>
-
