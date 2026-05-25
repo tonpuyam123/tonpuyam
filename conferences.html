@@ -1,194 +1,765 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Conferences & Talks | Tondonba Puyam</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Conferences &amp; Talks — Tondonba Puyam</title>
 
-  <!-- Hover effect ONLY for links in this page -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
-    ol li a:hover {
-      color: green;
+    :root {
+      --brown: #4a2f24;
+      --brown-mid: #6f4632;
+      --brown-light: #9a6045;
+      --terracotta: #b86b4b;
+      --gold: #c9954e;
+      --gold-light: #e4bd79;
+      --cream: #fbf4ea;
+      --ink: #221b17;
+      --ink-soft: #433833;
+      --ink-muted: #7a6a61;
+      --border: rgba(74, 47, 36, 0.18);
+      --white: #ffffff;
+      --tag-bg: rgba(184, 107, 75, 0.10);
+      --shadow: 0 4px 32px rgba(74, 47, 36, 0.12);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--cream);
+      color: var(--ink);
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 1.08rem;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-up {
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards;
+    }
+
+    .delay-1 { animation-delay: 0.10s; }
+    .delay-2 { animation-delay: 0.22s; }
+    .delay-3 { animation-delay: 0.34s; }
+    .delay-4 { animation-delay: 0.46s; }
+    .delay-5 { animation-delay: 0.58s; }
+
+    .topbar {
+      background: linear-gradient(90deg, var(--brown), var(--terracotta), var(--gold));
+      height: 5px;
+      width: 100%;
+    }
+
+    .wrapper {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 0 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.38rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--brown);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.98rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--brown);
+    }
+
+    .nav-links a.active {
+      border-bottom: 1.5px solid var(--terracotta);
+      padding-bottom: 2px;
+    }
+
+    .page-header {
+      margin: 44px 0 40px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 600;
+      color: var(--brown);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+
+    .page-header h1 em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--brown-light);
+    }
+
+    .page-header .lead {
+      margin-top: 10px;
+      font-size: 1.05rem;
+      color: var(--ink-muted);
+      max-width: 800px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 290px;
+      gap: 56px;
+      align-items: start;
+      margin-bottom: 60px;
+    }
+
+    .section {
+      margin-bottom: 48px;
+    }
+
+    .section-label {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(184, 107, 75, 0.45), transparent);
+    }
+
+    .event-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--brown);
+      border-radius: 3px;
+      padding: 20px 22px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 12px rgba(74, 47, 36, 0.06);
+      transition: box-shadow 0.2s, border-left-color 0.2s, transform 0.2s;
+    }
+
+    .event-card:hover {
+      box-shadow: 0 4px 24px rgba(74, 47, 36, 0.13);
+      border-left-color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .event-year {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--terracotta);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .event-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.42;
+      margin-bottom: 6px;
+    }
+
+    .event-title a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(154, 96, 69, 0.35);
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .event-title a:hover {
+      color: var(--brown);
+      border-color: var(--brown);
+      border-style: solid;
+    }
+
+    .event-location {
+      font-size: 0.94rem;
+      color: var(--ink-muted);
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+
+    .event-talk {
+      font-size: 0.98rem;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    .event-talk strong {
+      color: var(--brown);
+      font-weight: 600;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 3px 11px;
+      background: var(--tag-bg);
+      border: 1px solid rgba(184, 107, 75, 0.18);
+      border-radius: 2px;
+      font-size: 0.82rem;
+      color: var(--brown);
+      font-weight: 500;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .sidebar-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(74, 47, 36, 0.07);
+    }
+
+    .sidebar-card-header {
+      background: var(--brown);
+      padding: 9px 16px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+
+    .sidebar-card-body {
+      padding: 14px 16px;
+      font-size: 0.96rem;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    .sidebar-card-body a {
+      color: var(--brown-light);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(154, 96, 69, 0.45);
+    }
+
+    .sidebar-card-body a:hover {
+      color: var(--brown);
+      border-style: solid;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 0 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+    }
+
+    footer a {
+      color: var(--brown-light);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 900px) {
+      .wrapper {
+        padding: 0 22px;
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .sidebar {
+        position: static;
+      }
+
+      .page-header h1 {
+        font-size: 2.35rem;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: center;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 6px;
+        text-align: center;
+      }
     }
   </style>
 </head>
+
 <body>
 
-  <header>
-    <div class="nav-container">
-      <div class="logo">Tondonba Puyam</div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="research.html">Research</a>
-        <a href="publications.html">Publications</a>
-        <a href="conferences.html">Conferences</a>
-        <a href="awards.html">Awards</a>
-        <a href="about.html">About Me</a>
-      </nav>
+  <div class="topbar"></div>
+
+  <div class="wrapper">
+
+    <!-- NAV -->
+    <nav class="fade-up delay-1">
+      <a href="index.html" class="nav-brand">Tondonba Puyam</a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="conferences.html" class="active">Conferences</a></li>
+        <li><a href="awards.html">Awards</a></li>
+        <li><a href="about.html">About Me</a></li>
+      </ul>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header fade-up delay-2">
+      <h1><em>Conferences &amp; Talks</em></h1>
+      <p class="lead">
+        Conference presentations, invited talks, symposium talks, poster presentations,
+        and workshops in plant science, crop science, functional genomics, and banana
+        Fusarium wilt resistance.
+      </p>
     </div>
-  </header>
 
-  <main>
-    <section>
-      <h2>Conferences, Workshops & Talks</h2>
+    <div class="content-grid">
 
-      <!-- Conferences & Talks -->
-      <h3>Conferences & Talks</h3>
-      <ol>
-        <li>
-          <strong>2025:</strong>
-          <a href="https://tspbtw.wixsite.com/2025-1/about-4" target="_blank">
-            Plant Science Shapes the Future of Agriculture, TSPB
-          </a>, Taiwan —  
-          “Chromosomal deletions in banana somaclonal variants reveal negative regulators of immunity underlying Fusarium wilt resistance.”
-        </li>
+      <!-- MAIN CONTENT -->
+      <main>
 
-        <li>
-          <strong>2025:</strong>
-          <a href="https://iob.ntu.edu.tw/en/student/termreport" target="_blank">
-            IOB Mini Symposium, Institute of Biotechnology, NTU
-          </a>, Taiwan —  
-          “Chromosomal deletions in banana somaclonal variants reveal negative regulators of immunity underlying Fusarium wilt resistance.”
-        </li>
+        <!-- CONFERENCES AND TALKS -->
+        <section class="section fade-up delay-3">
+          <div class="section-label">Conferences &amp; Talks</div>
 
-        <li>
-          <strong>2024:</strong>
-          <a href="https://plan.core-apps.com/pag32/speaker/18d61941eb0e7db0da4068f851a4ef3e" target="_blank">
-            Plant & Animal Genome Conference (PAG 32)
-          </a>, San Diego, USA —  
-          “Reduced expression of calcium pumps augments banana resistance to Fusarium wilt TR4.”
-        </li>
+          <article class="event-card">
+            <div class="event-year">2025 · Conference Talk</div>
+            <div class="event-title">
+              <a href="https://tspbtw.wixsite.com/2025-1/about-4" target="_blank">
+                Plant Science Shapes the Future of Agriculture, TSPB
+              </a>
+            </div>
+            <div class="event-location">Taiwan</div>
+            <div class="event-talk">
+              “Chromosomal deletions in banana somaclonal variants reveal negative regulators
+              of immunity underlying Fusarium wilt resistance.”
+            </div>
+            <div class="tag-row">
+              <span class="tag">Plant Science</span>
+              <span class="tag">Banana</span>
+              <span class="tag">Fusarium Wilt</span>
+            </div>
+          </article>
 
-        <li>
-          <strong>2024:</strong>
-          <a href="https://www.acsac11.org/Home/Programme#2-1" target="_blank">
-            11th Asian Crop Science Association Conference
-          </a>, Taipei, Taiwan —  
-          “Reduced expression of calcium pumps augments banana resistance to Fusarium wilt TR4.”
-        </li>
+          <article class="event-card">
+            <div class="event-year">2025 · Symposium Talk</div>
+            <div class="event-title">
+              <a href="https://iob.ntu.edu.tw/en/student/termreport" target="_blank">
+                IOB Mini Symposium, Institute of Biotechnology, NTU
+              </a>
+            </div>
+            <div class="event-location">Taiwan</div>
+            <div class="event-talk">
+              “Chromosomal deletions in banana somaclonal variants reveal negative regulators
+              of immunity underlying Fusarium wilt resistance.”
+            </div>
+            <div class="tag-row">
+              <span class="tag">Functional Genomics</span>
+              <span class="tag">TR4 Resistance</span>
+            </div>
+          </article>
 
-        <li>
-          <strong>2024:</strong>
-          <a href="https://iob.ntu.edu.tw/?locale=en" target="_blank">
-            IOB Mini Symposium, NTU
-          </a>, Taiwan —  
-          “Reduced expression of calcium pumps augments banana resistance to Fusarium wilt TR4.”
-        </li>
+          <article class="event-card">
+            <div class="event-year">2024 · Conference Talk</div>
+            <div class="event-title">
+              <a href="https://plan.core-apps.com/pag32/speaker/18d61941eb0e7db0da4068f851a4ef3e" target="_blank">
+                Plant &amp; Animal Genome Conference, PAG 32
+              </a>
+            </div>
+            <div class="event-location">San Diego, USA</div>
+            <div class="event-talk">
+              “Reduced expression of calcium pumps augments banana resistance to Fusarium wilt TR4.”
+            </div>
+            <div class="tag-row">
+              <span class="tag">PAG 32</span>
+              <span class="tag">Calcium Pumps</span>
+              <span class="tag">Banana TR4</span>
+            </div>
+          </article>
 
-        <li>
-          <strong>2023:</strong>
-          <a href="https://iob.ntu.edu.tw/?locale=en" target="_blank">
-            IOB Mini Symposium, NTU
-          </a>, Taiwan —  
-          “Exploring the molecular basis of resistance to Fusarium wilt TR4 in Cavendish banana somaclonal variants.”
-        </li>
+          <article class="event-card">
+            <div class="event-year">2024 · Conference Talk</div>
+            <div class="event-title">
+              <a href="https://www.acsac11.org/Home/Programme#2-1" target="_blank">
+                11th Asian Crop Science Association Conference
+              </a>
+            </div>
+            <div class="event-location">Taipei, Taiwan</div>
+            <div class="event-talk">
+              “Reduced expression of calcium pumps augments banana resistance to Fusarium wilt TR4.”
+            </div>
+            <div class="tag-row">
+              <span class="tag">Crop Science</span>
+              <span class="tag">Plant Pathology</span>
+            </div>
+          </article>
 
-        <li>
-          <strong>2022:</strong>
-          <a href="https://iob.ntu.edu.tw/en/student/456/-91851934?locale=zh_cn" target="_blank">
-            IOB Mini Symposium, NTU
-          </a>, Taiwan —  
-          “Chromosomal deletion and aerenchyma development in Fusarium wilt resistant TBRI banana clones.”
-        </li>
+          <article class="event-card">
+            <div class="event-year">2024 · Symposium Talk</div>
+            <div class="event-title">
+              <a href="https://iob.ntu.edu.tw/?locale=en" target="_blank">
+                IOB Mini Symposium, NTU
+              </a>
+            </div>
+            <div class="event-location">Taiwan</div>
+            <div class="event-talk">
+              “Reduced expression of calcium pumps augments banana resistance to Fusarium wilt TR4.”
+            </div>
+            <div class="tag-row">
+              <span class="tag">NTU</span>
+              <span class="tag">Disease Resistance</span>
+            </div>
+          </article>
 
-        <li>
-          <strong>2019:</strong>
-          <a href="https://www.tezu.ernet.in/dfpt/events/First%20Circular_Int%20Conference%20TIIFH%202019_Updated.pdf" target="_blank">
-            International Conference on Technological Innovations for Integration of Food & Health
-          </a>, Tezpur University —  
-          “Development of nutraceutical enriched beverage from underutilized crops of North-East hill region.”
-        </li>
-      </ol>
+          <article class="event-card">
+            <div class="event-year">2023 · Symposium Talk</div>
+            <div class="event-title">
+              <a href="https://iob.ntu.edu.tw/?locale=en" target="_blank">
+                IOB Mini Symposium, NTU
+              </a>
+            </div>
+            <div class="event-location">Taiwan</div>
+            <div class="event-talk">
+              “Exploring the molecular basis of resistance to Fusarium wilt TR4
+              in Cavendish banana somaclonal variants.”
+            </div>
+            <div class="tag-row">
+              <span class="tag">Somaclonal Variants</span>
+              <span class="tag">TR4</span>
+            </div>
+          </article>
 
-      <!-- Posters & Workshops -->
-      <h3>Posters & Workshops</h3>
-      <ol>
-        <li>
-          <strong>2023:</strong>
-          <a href="https://abrc.sinica.edu.tw/en/photos.php?wid=51&aid=6696" target="_blank">
-            ABRC 24th Annual Poster Competition, Academia Sinica
-          </a>, Taiwan —  
-          “Copy number variation and Fusarium wilt TR4 resistance in Cavendish banana somaclonal variants.”
-          <strong>(Poster)</strong>
-        </li>
+          <article class="event-card">
+            <div class="event-year">2022 · Symposium Talk</div>
+            <div class="event-title">
+              <a href="https://iob.ntu.edu.tw/en/student/456/-91851934?locale=zh_cn" target="_blank">
+                IOB Mini Symposium, NTU
+              </a>
+            </div>
+            <div class="event-location">Taiwan</div>
+            <div class="event-talk">
+              “Chromosomal deletion and aerenchyma development in Fusarium wilt
+              resistant TBRI banana clones.”
+            </div>
+            <div class="tag-row">
+              <span class="tag">Chromosomal Deletion</span>
+              <span class="tag">TBRI Clones</span>
+            </div>
+          </article>
 
-        <li>
-          <strong>2023:</strong>
-          <a href="https://ipmb.sinica.edu.tw/en/activities/events/354" target="_blank">
-            Taiwan–Japan Plant Biology 2023
-          </a>, Academia Sinica —  
-          “Copy number variation and Fusarium wilt TR4 resistance in Cavendish banana somaclonal variants.”
-          <strong>(Poster)</strong>
-        </li>
+          <article class="event-card">
+            <div class="event-year">2019 · Conference Talk</div>
+            <div class="event-title">
+              <a href="https://www.tezu.ernet.in/dfpt/events/First%20Circular_Int%20Conference%20TIIFH%202019_Updated.pdf" target="_blank">
+                International Conference on Technological Innovations for Integration of Food &amp; Health
+              </a>
+            </div>
+            <div class="event-location">Tezpur University, India</div>
+            <div class="event-talk">
+              “Development of nutraceutical enriched beverage from underutilized crops
+              of North-East hill region.”
+            </div>
+            <div class="tag-row">
+              <span class="tag">Food &amp; Health</span>
+              <span class="tag">Nutraceuticals</span>
+            </div>
+          </article>
+        </section>
 
-        <li>
-          <strong>2023:</strong>
-          <a href="https://avrdc.org/phenoveg-2023/#" target="_blank">
-            International Plant Phenotyping Symposium – PhenoVeg 2023
-          </a>, World Vegetable Center —  
-          Participant
-        </li>
+        <!-- POSTERS AND WORKSHOPS -->
+        <section class="section fade-up delay-4">
+          <div class="section-label">Posters &amp; Workshops</div>
 
-        <li>
-          <strong>2022:</strong>
-          <a href="https://abrc.sinica.edu.tw/ch/photos.php?wid=51&aid=6335" target="_blank">
-            ABRC 23rd Annual Poster Competition, Academia Sinica
-          </a> (Virtual) —  
-          “Chromosomal deletion and aerenchyma development of Fusarium wilt resistant TBRI banana clones.”
-          <strong>(Poster)</strong>
-        </li>
+          <article class="event-card">
+            <div class="event-year">2023 · Poster</div>
+            <div class="event-title">
+              <a href="https://abrc.sinica.edu.tw/en/photos.php?wid=51&amp;aid=6696" target="_blank">
+                ABRC 24th Annual Poster Competition, Academia Sinica
+              </a>
+            </div>
+            <div class="event-location">Taiwan</div>
+            <div class="event-talk">
+              “Copy number variation and Fusarium wilt TR4 resistance in Cavendish
+              banana somaclonal variants.”
+            </div>
+            <div class="tag-row">
+              <span class="tag">Poster</span>
+              <span class="tag">Copy Number Variation</span>
+              <span class="tag">ABRC</span>
+            </div>
+          </article>
 
-        <li>
-          <strong>2022:</strong>
-          Post-pandemic Era for Frontier Plant Science and Sustainable Agriculture Conference, Nantou, Taiwan —  
-          “Chromosomal deletion and aerenchyma development in Fusarium wilt resistant TBRI banana clones.”
-          <strong>(Poster)</strong>
-        </li>
+          <article class="event-card">
+            <div class="event-year">2023 · Poster</div>
+            <div class="event-title">
+              <a href="https://ipmb.sinica.edu.tw/en/activities/events/354" target="_blank">
+                Taiwan&ndash;Japan Plant Biology 2023
+              </a>
+            </div>
+            <div class="event-location">Academia Sinica, Taiwan</div>
+            <div class="event-talk">
+              “Copy number variation and Fusarium wilt TR4 resistance in Cavendish
+              banana somaclonal variants.”
+            </div>
+            <div class="tag-row">
+              <span class="tag">Plant Biology</span>
+              <span class="tag">Taiwan&ndash;Japan</span>
+            </div>
+          </article>
 
-        <li>
-          <strong>2021:</strong>
-          <a href="https://iob.ntu.edu.tw/en/student/456/-91851934?locale=zh_cn" target="_blank">
-            IOB Mini Symposium, NTU
-          </a>, Taiwan —  
-          “Development of allele-specific SNV markers and identification of 3′ negative regulatory elements in Foc TR4 resistant TBRI banana clones.”
-          <strong>(Poster)</strong>
-        </li>
+          <article class="event-card">
+            <div class="event-year">2023 · Workshop Participant</div>
+            <div class="event-title">
+              <a href="https://avrdc.org/phenoveg-2023/#" target="_blank">
+                International Plant Phenotyping Symposium — PhenoVeg 2023
+              </a>
+            </div>
+            <div class="event-location">World Vegetable Center</div>
+            <div class="event-talk">
+              Participant.
+            </div>
+            <div class="tag-row">
+              <span class="tag">Phenotyping</span>
+              <span class="tag">Workshop</span>
+            </div>
+          </article>
 
-        <li>
-          <strong>2019:</strong>
-          <a href="https://icar.org.in/en/node/11495" target="_blank">
-            National Seminar of the Indian Society of Seed Technology
-          </a>, ICAR —  
-          “Different blackgram accessions evaluated for yield and intervarietal hybridization.”
-          <strong>(Poster)</strong>
-        </li>
+          <article class="event-card">
+            <div class="event-year">2022 · Poster</div>
+            <div class="event-title">
+              <a href="https://abrc.sinica.edu.tw/ch/photos.php?wid=51&amp;aid=6335" target="_blank">
+                ABRC 23rd Annual Poster Competition, Academia Sinica
+              </a>
+            </div>
+            <div class="event-location">Virtual</div>
+            <div class="event-talk">
+              “Chromosomal deletion and aerenchyma development of Fusarium wilt
+              resistant TBRI banana clones.”
+            </div>
+            <div class="tag-row">
+              <span class="tag">Poster</span>
+              <span class="tag">Aerenchyma</span>
+              <span class="tag">Fusarium Wilt</span>
+            </div>
+          </article>
 
-        <li>
-          <strong>2018:</strong>
-          <a href="https://www.ipsdis.org/image/catalog/Annual%20Reports/Annual_Report_2019_20_FINAL_for_print.pdf" target="_blank">
-            Indian Society of Plant Pathologists Meeting
-          </a>, ICAR–NEH Region —  
-          Participant
-        </li>
+          <article class="event-card">
+            <div class="event-year">2022 · Poster</div>
+            <div class="event-title">
+              Post-pandemic Era for Frontier Plant Science and Sustainable Agriculture Conference
+            </div>
+            <div class="event-location">Nantou, Taiwan</div>
+            <div class="event-talk">
+              “Chromosomal deletion and aerenchyma development in Fusarium wilt
+              resistant TBRI banana clones.”
+            </div>
+            <div class="tag-row">
+              <span class="tag">Sustainable Agriculture</span>
+              <span class="tag">Plant Science</span>
+            </div>
+          </article>
 
-        <li>
-          <strong>2018:</strong>
-          <a href="https://www.researchgate.net/publication/334051268_International_Conference_On_Climate_Change_Biodiversity_and_Sustainable_Agriculture_ICCBSA-2018_VOL_-I" target="_blank">
-            International Conference on Climate Change, Biodiversity & Sustainable Agriculture
-          </a>, AAU —  
-          “Crossability studies and genetic diversity in blackgram using molecular markers.”
-          <strong>(Poster)</strong>
-        </li>
-      </ol>
+          <article class="event-card">
+            <div class="event-year">2021 · Poster</div>
+            <div class="event-title">
+              <a href="https://iob.ntu.edu.tw/en/student/456/-91851934?locale=zh_cn" target="_blank">
+                IOB Mini Symposium, NTU
+              </a>
+            </div>
+            <div class="event-location">Taiwan</div>
+            <div class="event-talk">
+              “Development of allele-specific SNV markers and identification of 3′
+              negative regulatory elements in Foc TR4 resistant TBRI banana clones.”
+            </div>
+            <div class="tag-row">
+              <span class="tag">SNV Markers</span>
+              <span class="tag">Foc TR4</span>
+              <span class="tag">Poster</span>
+            </div>
+          </article>
 
-    </section>
-  </main>
+          <article class="event-card">
+            <div class="event-year">2019 · Poster</div>
+            <div class="event-title">
+              <a href="https://icar.org.in/en/node/11495" target="_blank">
+                National Seminar of the Indian Society of Seed Technology
+              </a>
+            </div>
+            <div class="event-location">ICAR, India</div>
+            <div class="event-talk">
+              “Different blackgram accessions evaluated for yield and intervarietal hybridization.”
+            </div>
+            <div class="tag-row">
+              <span class="tag">Blackgram</span>
+              <span class="tag">Seed Technology</span>
+            </div>
+          </article>
 
-  <footer>
-    Updated 2025
-  </footer>
+          <article class="event-card">
+            <div class="event-year">2018 · Participant</div>
+            <div class="event-title">
+              <a href="https://www.ipsdis.org/image/catalog/Annual%20Reports/Annual_Report_2019_20_FINAL_for_print.pdf" target="_blank">
+                Indian Society of Plant Pathologists Meeting
+              </a>
+            </div>
+            <div class="event-location">ICAR&ndash;NEH Region, India</div>
+            <div class="event-talk">
+              Participant.
+            </div>
+            <div class="tag-row">
+              <span class="tag">Plant Pathology</span>
+              <span class="tag">Participant</span>
+            </div>
+          </article>
+
+          <article class="event-card">
+            <div class="event-year">2018 · Poster</div>
+            <div class="event-title">
+              <a href="https://www.researchgate.net/publication/334051268_International_Conference_On_Climate_Change_Biodiversity_and_Sustainable_Agriculture_ICCBSA-2018_VOL_-I" target="_blank">
+                International Conference on Climate Change, Biodiversity &amp; Sustainable Agriculture
+              </a>
+            </div>
+            <div class="event-location">AAU, India</div>
+            <div class="event-talk">
+              “Crossability studies and genetic diversity in blackgram using molecular markers.”
+            </div>
+            <div class="tag-row">
+              <span class="tag">Climate Change</span>
+              <span class="tag">Biodiversity</span>
+              <span class="tag">Blackgram</span>
+            </div>
+          </article>
+        </section>
+
+      </main>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar fade-up delay-3">
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-header">Presentation Topics</div>
+          <div class="sidebar-card-body">
+            Banana Fusarium wilt TR4 resistance, calcium pumps, chromosomal deletions,
+            copy number variation, somaclonal variation, and plant immunity.
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-header">Conference Areas</div>
+          <div class="sidebar-card-body">
+            Plant science, crop science, plant pathology, functional genomics,
+            sustainable agriculture, phenotyping, and molecular breeding.
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-header">Institutions</div>
+          <div class="sidebar-card-body">
+            NTU, Academia Sinica, ABRC, PAG, TSPB, ACSAC, ICAR, AAU, and Tezpur University.
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="fade-up delay-5">
+      <span>© <span id="year"></span> Puyam Tondonba Singh</span>
+      <span>Plant Science · Conferences · Talks · Posters</span>
+    </footer>
+
+  </div>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
