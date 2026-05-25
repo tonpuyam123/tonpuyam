@@ -1,143 +1,601 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Awards & Honors |Puyam  Tondonba Singh</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Awards &amp; Honors — Puyam Tondonba Singh</title>
 
-  <!-- Hover effect ONLY for links in this page -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
-    ol li a:hover {
-      color: green;
+    :root {
+      --brown: #4a2f24;
+      --brown-mid: #6f4632;
+      --brown-light: #9a6045;
+      --terracotta: #b86b4b;
+      --gold: #c9954e;
+      --gold-light: #e4bd79;
+      --cream: #fbf4ea;
+      --ink: #221b17;
+      --ink-soft: #433833;
+      --ink-muted: #7a6a61;
+      --border: rgba(74, 47, 36, 0.18);
+      --white: #ffffff;
+      --tag-bg: rgba(184, 107, 75, 0.10);
+      --shadow: 0 4px 32px rgba(74, 47, 36, 0.12);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--cream);
+      color: var(--ink);
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 1.08rem;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-up {
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards;
+    }
+
+    .delay-1 { animation-delay: 0.10s; }
+    .delay-2 { animation-delay: 0.22s; }
+    .delay-3 { animation-delay: 0.34s; }
+    .delay-4 { animation-delay: 0.46s; }
+    .delay-5 { animation-delay: 0.58s; }
+
+    .topbar {
+      background: linear-gradient(90deg, var(--brown), var(--terracotta), var(--gold));
+      height: 5px;
+      width: 100%;
+    }
+
+    .wrapper {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 0 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.38rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--brown);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.98rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--brown);
+    }
+
+    .nav-links a.active {
+      border-bottom: 1.5px solid var(--terracotta);
+      padding-bottom: 2px;
+    }
+
+    .page-header {
+      margin: 44px 0 40px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 600;
+      color: var(--brown);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+
+    .page-header h1 em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--brown-light);
+    }
+
+    .page-header .lead {
+      margin-top: 10px;
+      font-size: 1.05rem;
+      color: var(--ink-muted);
+      max-width: 800px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 290px;
+      gap: 56px;
+      align-items: start;
+      margin-bottom: 60px;
+    }
+
+    .section {
+      margin-bottom: 48px;
+    }
+
+    .section-label {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(184, 107, 75, 0.45), transparent);
+    }
+
+    .award-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--brown);
+      border-radius: 3px;
+      padding: 20px 22px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 12px rgba(74, 47, 36, 0.06);
+      transition: box-shadow 0.2s, border-left-color 0.2s, transform 0.2s;
+    }
+
+    .award-card:hover {
+      box-shadow: 0 4px 24px rgba(74, 47, 36, 0.13);
+      border-left-color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .award-year {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--terracotta);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .award-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.22rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.42;
+      margin-bottom: 6px;
+    }
+
+    .award-event {
+      font-size: 0.98rem;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    .award-event a {
+      color: var(--brown-light);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(154, 96, 69, 0.45);
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .award-event a:hover {
+      color: var(--brown);
+      border-color: var(--brown);
+      border-style: solid;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 3px 11px;
+      background: var(--tag-bg);
+      border: 1px solid rgba(184, 107, 75, 0.18);
+      border-radius: 2px;
+      font-size: 0.82rem;
+      color: var(--brown);
+      font-weight: 500;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .sidebar-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(74, 47, 36, 0.07);
+    }
+
+    .sidebar-card-header {
+      background: var(--brown);
+      padding: 9px 16px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+
+    .sidebar-card-body {
+      padding: 14px 16px;
+      font-size: 0.96rem;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 0 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+    }
+
+    @media (max-width: 900px) {
+      .wrapper {
+        padding: 0 22px;
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .sidebar {
+        position: static;
+      }
+
+      .page-header h1 {
+        font-size: 2.35rem;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: center;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 6px;
+        text-align: center;
+      }
     }
   </style>
 </head>
+
 <body>
 
-  <header>
-    <div class="nav-container">
-      <div class="logo">Tondonba Puyam</div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="research.html">Research</a>
-        <a href="publications.html">Publications</a>
-        <a href="conferences.html">Conferences</a>
-        <a href="awards.html">Awards</a>
-        <a href="about.html">About Me</a>
-      </nav>
+  <div class="topbar"></div>
+
+  <div class="wrapper">
+
+    <!-- NAV -->
+    <nav class="fade-up delay-1">
+      <a href="index.html" class="nav-brand">Tondonba Puyam</a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="conferences.html">Conferences</a></li>
+        <li><a href="awards.html" class="active">Awards</a></li>
+        <li><a href="about.html">About Me</a></li>
+      </ul>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header fade-up delay-2">
+      <h1><em>Awards &amp; Honors</em></h1>
+      <p class="lead">
+        Recognition for oral presentations, poster presentations, research communication,
+        travel grants, and scholarly contributions in plant science and agricultural research.
+      </p>
     </div>
-  </header>
 
-  <main>
-    <section>
-      <h2>Awards & Honors</h2>
+    <div class="content-grid">
 
-      <!-- Presentation Awards -->
-      <h3>Presentation Awards</h3>
-      <ol>
-        <li>
-          <strong>2025:</strong>
-          Selected Abstract Oral Presentation Winner — 
-          <a href="https://tspbtw.wixsite.com/2025-1/about-4" target="_blank">
-            Plant Science Shapes the Future of Agriculture (TSPB)
-          </a>
-        </li>
+      <!-- MAIN CONTENT -->
+      <main>
 
-        <li>
-          <strong>2025:</strong>
-          Outstanding Oral Presentation Award — 
-          <a href="https://iob.ntu.edu.tw/?locale=en" target="_blank">
-            IOB Mini Symposium, NTU
-          </a>
-        </li>
+        <!-- PRESENTATION AWARDS -->
+        <section class="section fade-up delay-3">
+          <div class="section-label">Presentation Awards</div>
 
-        <li>
-          <strong>2025:</strong>
-          Best Oral Presentation — 
-          <a href="https://www.tbgds.org.tw/posts/20250205-2025-international-symposium-on-genomics-evolution-and-biodiversity" target="_blank">
-            Taiwan Biodiversity Genomics, Evolution & Biodiversity
-          </a>
-        </li>
+          <article class="award-card">
+            <div class="award-year">2025 · Oral Presentation</div>
+            <div class="award-title">Selected Abstract Oral Presentation Winner</div>
+            <div class="award-event">
+              <a href="https://tspbtw.wixsite.com/2025-1/about-4" target="_blank">
+                Plant Science Shapes the Future of Agriculture (TSPB)
+              </a>
+            </div>
+            <div class="tag-row">
+              <span class="tag">Plant Science</span>
+              <span class="tag">Oral Presentation</span>
+              <span class="tag">TSPB</span>
+            </div>
+          </article>
 
-        <li>
-          <strong>2024:</strong>
-          Outstanding Oral Presentation Award — 
-          <a href="https://iob.ntu.edu.tw/?locale=en" target="_blank">
-            IOB Mini Symposium, NTU
-          </a>
-        </li>
+          <article class="award-card">
+            <div class="award-year">2025 · Oral Presentation</div>
+            <div class="award-title">Outstanding Oral Presentation Award</div>
+            <div class="award-event">
+              <a href="https://iob.ntu.edu.tw/?locale=en" target="_blank">
+                IOB Mini Symposium, NTU
+              </a>
+            </div>
+            <div class="tag-row">
+              <span class="tag">NTU</span>
+              <span class="tag">Biotechnology</span>
+              <span class="tag">Oral Presentation</span>
+            </div>
+          </article>
 
-        <li>
-          <strong>2022:</strong>
-          Outstanding Oral Presentation Award — 
-          <a href="https://iob.ntu.edu.tw/?locale=en" target="_blank">
-            IOB Mini Symposium, NTU
-          </a>
-        </li>
-      </ol>
+          <article class="award-card">
+            <div class="award-year">2025 · Oral Presentation</div>
+            <div class="award-title">Best Oral Presentation</div>
+            <div class="award-event">
+              <a href="https://www.tbgds.org.tw/posts/20250205-2025-international-symposium-on-genomics-evolution-and-biodiversity" target="_blank">
+                Taiwan Biodiversity Genomics, Evolution &amp; Biodiversity
+              </a>
+            </div>
+            <div class="tag-row">
+              <span class="tag">Genomics</span>
+              <span class="tag">Biodiversity</span>
+              <span class="tag">Best Presentation</span>
+            </div>
+          </article>
 
-      <!-- Poster Presentation Awards -->
-      <h3>Poster Presentation Awards</h3>
-      <ol>
-        <li>
-          <strong>2024:</strong>
-          ABRC Travel Grant — 
-          <a href="https://abrc.sinica.edu.tw/ch/photos.php?wid=51&aid=6930" target="_blank">
-            ABRC 25th Annual Poster Competition, Academia Sinica
-          </a>
-        </li>
+          <article class="award-card">
+            <div class="award-year">2024 · Oral Presentation</div>
+            <div class="award-title">Outstanding Oral Presentation Award</div>
+            <div class="award-event">
+              <a href="https://iob.ntu.edu.tw/?locale=en" target="_blank">
+                IOB Mini Symposium, NTU
+              </a>
+            </div>
+            <div class="tag-row">
+              <span class="tag">NTU</span>
+              <span class="tag">Plant Biology</span>
+              <span class="tag">Oral Presentation</span>
+            </div>
+          </article>
 
-        <li>
-          <strong>2024:</strong>
-          Travel Grant Winner — 
-          <a href="https://intlpag.org/PAG33/program/poster-sessions?view=article&id=497:pag-32-travel-grant-winners&catid=105" target="_blank">
-            Plant & Animal Genome Conference (PAG 32)
-          </a>, San Diego
-        </li>
+          <article class="award-card">
+            <div class="award-year">2022 · Oral Presentation</div>
+            <div class="award-title">Outstanding Oral Presentation Award</div>
+            <div class="award-event">
+              <a href="https://iob.ntu.edu.tw/?locale=en" target="_blank">
+                IOB Mini Symposium, NTU
+              </a>
+            </div>
+            <div class="tag-row">
+              <span class="tag">NTU</span>
+              <span class="tag">IOB Mini Symposium</span>
+              <span class="tag">Oral Presentation</span>
+            </div>
+          </article>
+        </section>
 
-        <li>
-          <strong>2023:</strong>
-          Outstanding Poster Award — 
-          <a href="https://www.as-bcst.sinica.edu.tw/upload/2022_web_abrc/202312/960_202312221522582.jpg" target="_blank">
-            ABRC 24th Annual Poster Competition
-          </a>, Academia Sinica
-        </li>
+        <!-- POSTER AWARDS -->
+        <section class="section fade-up delay-4">
+          <div class="section-label">Poster Presentation Awards &amp; Travel Grants</div>
 
-        <li>
-          <strong>2022:</strong>
-          Outstanding Poster Award — 
-          <a href="https://abrc.sinica.edu.tw/upload/2022_web_abrc/202211/20221101164935.pdf" target="_blank">
-            ABRC 23rd Annual Poster Competition
-          </a>, Academia Sinica
-        </li>
+          <article class="award-card">
+            <div class="award-year">2024 · Travel Grant</div>
+            <div class="award-title">ABRC Travel Grant</div>
+            <div class="award-event">
+              <a href="https://abrc.sinica.edu.tw/ch/photos.php?wid=51&amp;aid=6930" target="_blank">
+                ABRC 25th Annual Poster Competition, Academia Sinica
+              </a>
+            </div>
+            <div class="tag-row">
+              <span class="tag">ABRC</span>
+              <span class="tag">Academia Sinica</span>
+              <span class="tag">Travel Grant</span>
+            </div>
+          </article>
 
-        <li>
-          <strong>2021:</strong>
-          Outstanding Poster Award — 
-          <a href="https://iob.ntu.edu.tw/?locale=en" target="_blank">
-            IOB Mini Symposium, NTU
-          </a>
-        </li>
-      </ol>
+          <article class="award-card">
+            <div class="award-year">2024 · Travel Grant</div>
+            <div class="award-title">Travel Grant Winner</div>
+            <div class="award-event">
+              <a href="https://intlpag.org/PAG33/program/poster-sessions?view=article&amp;id=497:pag-32-travel-grant-winners&amp;catid=105" target="_blank">
+                Plant &amp; Animal Genome Conference (PAG 32)
+              </a>,
+              San Diego, USA
+            </div>
+            <div class="tag-row">
+              <span class="tag">PAG 32</span>
+              <span class="tag">Genome Conference</span>
+              <span class="tag">Travel Grant</span>
+            </div>
+          </article>
 
-      <!-- Other Awards (if any) -->
-      <h3>Other Honors</h3>
-      <ol>
-        <li>
-          <strong>2019:</strong>
-          Best Article Award —  
-          <em>Agriculture and Food: e-Newsletter</em>, Vol. 1:11
-        </li>
-      </ol>
+          <article class="award-card">
+            <div class="award-year">2023 · Poster Award</div>
+            <div class="award-title">Outstanding Poster Award</div>
+            <div class="award-event">
+              <a href="https://www.as-bcst.sinica.edu.tw/upload/2022_web_abrc/202312/960_202312221522582.jpg" target="_blank">
+                ABRC 24th Annual Poster Competition
+              </a>,
+              Academia Sinica
+            </div>
+            <div class="tag-row">
+              <span class="tag">ABRC</span>
+              <span class="tag">Poster Award</span>
+              <span class="tag">Academia Sinica</span>
+            </div>
+          </article>
 
-    </section>
-  </main>
+          <article class="award-card">
+            <div class="award-year">2022 · Poster Award</div>
+            <div class="award-title">Outstanding Poster Award</div>
+            <div class="award-event">
+              <a href="https://abrc.sinica.edu.tw/upload/2022_web_abrc/202211/20221101164935.pdf" target="_blank">
+                ABRC 23rd Annual Poster Competition
+              </a>,
+              Academia Sinica
+            </div>
+            <div class="tag-row">
+              <span class="tag">ABRC</span>
+              <span class="tag">Poster Award</span>
+              <span class="tag">Academia Sinica</span>
+            </div>
+          </article>
 
-  <footer>
-    Updated 2025
-  </footer>
+          <article class="award-card">
+            <div class="award-year">2021 · Poster Award</div>
+            <div class="award-title">Outstanding Poster Award</div>
+            <div class="award-event">
+              <a href="https://iob.ntu.edu.tw/?locale=en" target="_blank">
+                IOB Mini Symposium, NTU
+              </a>
+            </div>
+            <div class="tag-row">
+              <span class="tag">NTU</span>
+              <span class="tag">Poster Presentation</span>
+              <span class="tag">Award</span>
+            </div>
+          </article>
+        </section>
+
+        <!-- OTHER HONORS -->
+        <section class="section fade-up delay-5">
+          <div class="section-label">Other Honors</div>
+
+          <article class="award-card">
+            <div class="award-year">2019 · Article Award</div>
+            <div class="award-title">Best Article Award</div>
+            <div class="award-event">
+              <em>Agriculture and Food: e-Newsletter</em>, Vol. 1:11.
+            </div>
+            <div class="tag-row">
+              <span class="tag">Agriculture</span>
+              <span class="tag">Food Science</span>
+              <span class="tag">Article Award</span>
+            </div>
+          </article>
+        </section>
+
+      </main>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar fade-up delay-3">
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-header">Recognition Areas</div>
+          <div class="sidebar-card-body">
+            Oral presentations, poster presentations, travel grants, research communication,
+            plant science, genomics, and agricultural biotechnology.
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-header">Awarding Institutions</div>
+          <div class="sidebar-card-body">
+            NTU, Academia Sinica, ABRC, TSPB, PAG, and Taiwan Biodiversity
+            Genomics, Evolution &amp; Biodiversity.
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-header">Research Focus</div>
+          <div class="sidebar-card-body">
+            Banana Fusarium wilt resistance, functional genomics, molecular plant biology,
+            plant immunity, and crop disease resistance.
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="fade-up delay-5">
+      <span>© <span id="year"></span> Puyam Tondonba Singh</span>
+      <span>Awards · Honors · Research Recognition</span>
+    </footer>
+
+  </div>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
@@ -145,4 +603,3 @@
 
 </body>
 </html>
-
