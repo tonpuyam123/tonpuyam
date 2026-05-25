@@ -1,101 +1,732 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Puyam Tondonba Singh | Molecular Plant Biologist</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Puyam Tondonba Singh — Molecular Plant Biologist</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --brown: #4a2f24;
+      --brown-mid: #6f4632;
+      --brown-light: #9a6045;
+      --terracotta: #b86b4b;
+      --gold: #c9954e;
+      --gold-light: #e4bd79;
+      --cream: #fbf4ea;
+      --cream-dark: #f1e2cf;
+      --ink: #221b17;
+      --ink-soft: #433833;
+      --ink-muted: #7a6a61;
+      --border: rgba(74, 47, 36, 0.18);
+      --white: #ffffff;
+      --tag-bg: rgba(184, 107, 75, 0.10);
+      --shadow: 0 4px 32px rgba(74, 47, 36, 0.12);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--cream);
+      color: var(--ink);
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 1.08rem;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-up {
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards;
+    }
+
+    .delay-1 { animation-delay: 0.10s; }
+    .delay-2 { animation-delay: 0.22s; }
+    .delay-3 { animation-delay: 0.34s; }
+    .delay-4 { animation-delay: 0.46s; }
+    .delay-5 { animation-delay: 0.58s; }
+
+    .topbar {
+      background: linear-gradient(90deg, var(--brown), var(--terracotta), var(--gold));
+      height: 5px;
+      width: 100%;
+    }
+
+    .wrapper {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 0 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.38rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--brown);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.98rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--brown);
+    }
+
+    .nav-links a.active {
+      border-bottom: 1.5px solid var(--terracotta);
+      padding-bottom: 2px;
+    }
+
+    .postdoc-banner {
+      margin: 32px 0 0;
+      padding: 13px 22px;
+      background: linear-gradient(135deg, var(--brown) 0%, var(--brown-mid) 100%);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    .postdoc-banner .dot {
+      width: 9px;
+      height: 9px;
+      background: var(--gold-light);
+      border-radius: 50%;
+      flex-shrink: 0;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(228, 189, 121, 0.75);
+      }
+      50% {
+        box-shadow: 0 0 0 6px rgba(228, 189, 121, 0);
+      }
+    }
+
+    .postdoc-banner p {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.97rem;
+      font-weight: 500;
+      color: var(--cream);
+      letter-spacing: 0.03em;
+    }
+
+    .postdoc-banner strong {
+      color: var(--gold-light);
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 310px 1fr;
+      gap: 52px;
+      margin: 44px 0;
+      align-items: start;
+    }
+
+    .left-col {
+      position: sticky;
+      top: 32px;
+    }
+
+    .photo-frame {
+      position: relative;
+      width: 100%;
+    }
+
+    .photo-frame::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 100%;
+      height: 100%;
+      border: 2px solid var(--gold);
+      border-radius: 3px;
+      z-index: 0;
+    }
+
+    .profile-photo {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 3px;
+      filter: grayscale(5%);
+      object-fit: cover;
+      box-shadow: 0 3px 18px rgba(74, 47, 36, 0.15);
+    }
+
+    .contact-card {
+      margin-top: 28px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(74, 47, 36, 0.07);
+    }
+
+    .contact-card-header {
+      background: var(--brown);
+      padding: 9px 16px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+
+    .contact-items {
+      padding: 12px 0;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 8px 16px;
+      font-size: 0.94rem;
+      color: var(--ink-soft);
+      text-decoration: none;
+      transition: background 0.18s, color 0.18s;
+    }
+
+    .contact-item:hover {
+      background: var(--tag-bg);
+      color: var(--brown);
+    }
+
+    .contact-item i {
+      width: 18px;
+      text-align: center;
+      color: var(--terracotta);
+      font-size: 0.9rem;
+    }
+
+    .right-col {
+      padding-top: 4px;
+    }
+
+    .name-block {
+      margin-bottom: 26px;
+    }
+
+    .name-block h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.25rem;
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--brown);
+      letter-spacing: -0.01em;
+    }
+
+    .name-block h1 em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--brown-light);
+    }
+
+    .name-block .subtitle {
+      margin-top: 6px;
+      font-size: 1.05rem;
+      color: var(--ink-muted);
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+
+    .subtitle a,
+    .bio-text a,
+    .edu-body a {
+      color: var(--brown-light);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(154, 96, 69, 0.35);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .subtitle a:hover,
+    .bio-text a:hover,
+    .edu-body a:hover {
+      color: var(--brown);
+      border-color: var(--brown);
+    }
+
+    .section-label {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(184, 107, 75, 0.45), transparent);
+    }
+
+    .bio-text {
+      font-size: 1.08rem;
+      color: var(--ink-soft);
+      line-height: 1.85;
+      margin-bottom: 24px;
+    }
+
+    .bio-text strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .research-section,
+    .edu-section,
+    .highlight-section {
+      margin: 32px 0;
+    }
+
+    .tags-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 4px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 5px 14px;
+      background: var(--tag-bg);
+      border: 1px solid rgba(184, 107, 75, 0.18);
+      border-radius: 2px;
+      font-size: 0.88rem;
+      color: var(--brown);
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: background 0.18s, border-color 0.18s;
+    }
+
+    .tag:hover {
+      background: rgba(184, 107, 75, 0.16);
+      border-color: rgba(184, 107, 75, 0.35);
+    }
+
+    .tag.primary {
+      background: var(--brown);
+      color: var(--cream);
+      border-color: var(--brown);
+    }
+
+    .tag.primary:hover {
+      background: var(--brown-mid);
+    }
+
+    .edu-list,
+    .highlight-list {
+      list-style: none;
+    }
+
+    .edu-item,
+    .highlight-item {
+      display: flex;
+      gap: 16px;
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(74, 47, 36, 0.08);
+    }
+
+    .edu-item:last-child,
+    .highlight-item:last-child {
+      border-bottom: none;
+    }
+
+    .edu-year,
+    .highlight-year {
+      flex-shrink: 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--terracotta);
+      width: 58px;
+      padding-top: 2px;
+      letter-spacing: 0.03em;
+    }
+
+    .edu-body,
+    .highlight-body {
+      font-size: 0.98rem;
+      color: var(--ink-soft);
+      line-height: 1.55;
+    }
+
+    .edu-body strong,
+    .highlight-body strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .edu-body span,
+    .highlight-body span {
+      color: var(--ink-muted);
+      font-size: 0.92rem;
+      display: block;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 0 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+    }
+
+    footer a {
+      color: var(--brown-light);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 860px) {
+      .wrapper {
+        padding: 0 22px;
+      }
+
+      .main-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .left-col {
+        position: static;
+        display: flex;
+        gap: 24px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .photo-frame {
+        width: 200px;
+        flex-shrink: 0;
+      }
+
+      .contact-card {
+        flex: 1 1 220px;
+        margin-top: 0;
+      }
+
+      .name-block h1 {
+        font-size: 2.45rem;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: center;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 6px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .photo-frame {
+        width: 100%;
+      }
+
+      .left-col {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="nav-container">
-      <div class="logo">Tondonba Puyam</div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="research.html">Research</a>
-        <a href="publications.html">Publications</a>
-        <a href="conferences.html">Conferences</a>
-        <a href="awards.html">Awards</a>
-        <a href="about.html">About Me</a>
-      </nav>
+  <div class="topbar"></div>
+
+  <div class="wrapper">
+
+    <!-- NAV -->
+    <nav class="fade-up delay-1">
+      <a href="index.html" class="nav-brand">Tondonba Puyam</a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="conferences.html">Conferences</a></li>
+        <li><a href="awards.html">Awards</a></li>
+        <li><a href="about.html">About Me</a></li>
+      </ul>
+    </nav>
+
+    <!-- CURRENT POSITION BANNER -->
+    <div class="postdoc-banner fade-up delay-2">
+      <span class="dot"></span>
+      <p>
+        <strong>Postdoctoral Researcher</strong> in molecular plant biology, plant pathology,
+        functional genomics, and banana Fusarium wilt resistance.
+      </p>
     </div>
-  </header>
 
-  <!-- Main Content -->
-  <main>
+    <!-- MAIN GRID -->
+    <div class="main-grid">
 
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-text">
-        <h1>Hello, I am <span style="white-space:nowrap;">Tondonba Puyam</span></h1>
+      <!-- LEFT COLUMN -->
+      <aside class="left-col fade-up delay-3">
 
-        <h2>
-          Molecular Plant Biologist &mdash; Molecular Breeder &mdash;
-          Fusarium wilt TR4, plant&ndash;microbe interactions, functional genomics
-        </h2>
-
-        <p>
-          I am a molecular plant biologist and molecular breeder specializing in
-          <em>Fusarium</em> wilt resistance, plant&ndash;microbe interactions,
-          and functional genomics in crop plants. My research focuses on
-          unraveling the mechanisms of resistance to
-          <em>Fusarium oxysporum</em> f. sp. <em>cubense</em> tropical race 4 (TR4)
-          in Cavendish banana somaclonal variants, including chromosomal deletions,
-          susceptibility gene discovery, and
-          salicylic acid (SA)&ndash;mediated immunity.
-        </p>
-
-        <p>
-          I am currently a Ph.D. candidate in Biotechnology at
-          <strong><a href="https://www.ntu.edu.tw/" target="_blank">National Taiwan University</a></strong>,
-          conducting my research at the
-          <strong><a href="https://abrc.sinica.edu.tw/" target="_blank">Agricultural Biotechnology Research Center (ABRC), Academia Sinica</a></strong>.
-          Previously, I completed my M.Sc. in Genetics and Plant Breeding at the
-          <strong><a href="https://www.cau.ac.in/" target="_blank">College of Post Graduate Studies in Agricultural Sciences, Central Agricultural University</a></strong>
-          in Meghalaya, India, and my B.Sc. in Agriculture at
-          <strong><a href="https://www.aau.ac.in/" target="_blank">Assam Agricultural University</a></strong>, Jorhat, India.
-          I am actively seeking <strong>postdoctoral positions</strong> in plant molecular biology,
-          plant pathology, functional genomics, genome editing, and host&ndash;pathogen interactions.
-        </p>
-      </div>
-
-      <img src="Tony.jpg" alt="Tondonba Puyam" />
-
-      <div></div>
-    </section>
-
-    <!-- Profile Box -->
-    <section>
-      <h2>Click here</h2>
-
-      <div class="profiles-container">
-        <div class="profile-links">
-
-          <a class="profile-card" href="CV.pdf" target="_blank">
-            <span class="icon">📄</span> CV
-          </a>
-
-          <a class="profile-card" href="https://www.researchgate.net/profile/Tondonba-Puyam" target="_blank">
-            <span class="icon">📚</span> ResearchGate
-          </a>
-
-          <a class="profile-card" href="https://github.com/tonpuyam123" target="_blank">
-            <span class="icon">💻</span> GitHub
-          </a>
-
+        <div class="photo-frame">
+          <img src="Tony.jpg" alt="Puyam Tondonba Singh" class="profile-photo" loading="lazy">
         </div>
-      </div>
-    </section>
 
-  </main>
+        <div class="contact-card">
+          <div class="contact-card-header">Profiles</div>
 
-  <footer>
-    Updated 2025
-  </footer>
+          <div class="contact-items">
+            <a class="contact-item" href="CV.pdf" target="_blank">
+              <i class="far fa-file-alt"></i> Curriculum Vitae
+            </a>
+
+            <a class="contact-item" href="https://www.researchgate.net/profile/Tondonba-Puyam" target="_blank">
+              <i class="fab fa-researchgate"></i> ResearchGate
+            </a>
+
+            <a class="contact-item" href="https://github.com/tonpuyam123" target="_blank">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+
+            <a class="contact-item" href="https://abrc.sinica.edu.tw/" target="_blank">
+              <i class="fas fa-university"></i> ABRC, Academia Sinica
+            </a>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- RIGHT COLUMN -->
+      <main class="right-col fade-up delay-4">
+
+        <div class="name-block">
+          <h1><em>Puyam Tondonba Singh</em></h1>
+
+          <p class="subtitle">
+            Postdoctoral Researcher ·
+            <a href="https://abrc.sinica.edu.tw/" target="_blank">Agricultural Biotechnology Research Center, Academia Sinica</a> ·
+            Molecular Plant Biology &amp; Functional Genomics
+          </p>
+        </div>
+
+        <!-- ABOUT -->
+        <div class="section-label">About</div>
+
+        <p class="bio-text">
+          I am a <strong>postdoctoral researcher in molecular plant biology</strong>,
+          with research interests in plant pathology, molecular breeding, functional genomics,
+          and host&ndash;pathogen interactions. My work focuses on understanding resistance
+          mechanisms against <em>Fusarium oxysporum</em> f. sp. <em>cubense</em> tropical race 4
+          (TR4), a destructive pathogen threatening global banana production.
+        </p>
+
+        <p class="bio-text">
+          My recent research investigates <strong>Cavendish banana somaclonal variants</strong>
+          with enhanced resistance to Fusarium wilt. This work integrates genomic,
+          transcriptomic, and functional analyses to identify chromosomal deletions,
+          susceptibility-related genes, and salicylic acid (SA)&ndash;mediated immune responses
+          that contribute to disease resistance.
+        </p>
+
+        <p class="bio-text">
+          I completed my Ph.D. training in Biotechnology at
+          <a href="https://www.ntu.edu.tw/" target="_blank">National Taiwan University</a>,
+          conducting my research at the
+          <a href="https://abrc.sinica.edu.tw/" target="_blank">Agricultural Biotechnology Research Center (ABRC), Academia Sinica</a>.
+          Previously, I earned my M.Sc. in Genetics and Plant Breeding from the
+          <a href="https://www.cau.ac.in/" target="_blank">College of Post Graduate Studies in Agricultural Sciences, Central Agricultural University</a>,
+          Meghalaya, India, and my B.Sc. in Agriculture from
+          <a href="https://www.aau.ac.in/" target="_blank">Assam Agricultural University</a>,
+          Jorhat, India.
+        </p>
+
+        <!-- RESEARCH INTERESTS -->
+        <div class="research-section fade-up delay-5">
+          <div class="section-label">Research Interests</div>
+
+          <div class="tags-grid">
+            <span class="tag primary">Molecular Plant Biology</span>
+            <span class="tag primary">Plant Pathology</span>
+            <span class="tag primary">Functional Genomics</span>
+            <span class="tag">Banana Fusarium Wilt TR4</span>
+            <span class="tag">Molecular Breeding</span>
+            <span class="tag">Plant&ndash;Microbe Interactions</span>
+            <span class="tag">Host&ndash;Pathogen Interactions</span>
+            <span class="tag">Genome Editing</span>
+            <span class="tag">Disease Resistance</span>
+            <span class="tag">Salicylic Acid Immunity</span>
+          </div>
+        </div>
+
+        <!-- RESEARCH HIGHLIGHTS -->
+        <div class="highlight-section fade-up delay-5">
+          <div class="section-label">Research Highlights</div>
+
+          <ul class="highlight-list">
+            <li class="highlight-item">
+              <span class="highlight-year">2025</span>
+              <div class="highlight-body">
+                <strong>Chromosomal deletions in banana somaclonal variants</strong>
+                <span>
+                  Investigated how large-scale chromosomal structural variation contributes
+                  to Fusarium wilt resistance in Cavendish banana.
+                </span>
+              </div>
+            </li>
+
+            <li class="highlight-item">
+              <span class="highlight-year">TR4</span>
+              <div class="highlight-body">
+                <strong>Resistance mechanisms against Fusarium wilt tropical race 4</strong>
+                <span>
+                  Focused on negative regulators of immunity, susceptibility gene discovery,
+                  and molecular pathways that enhance banana defense responses.
+                </span>
+              </div>
+            </li>
+
+            <li class="highlight-item">
+              <span class="highlight-year">SA</span>
+              <div class="highlight-body">
+                <strong>Salicylic acid-mediated plant immunity</strong>
+                <span>
+                  Studied how suppression of selected candidate genes can enhance immune
+                  responses and improve resistance to Fusarium wilt.
+                </span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- EDUCATION -->
+        <div class="edu-section fade-up delay-5">
+          <div class="section-label">Education</div>
+
+          <ul class="edu-list">
+            <li class="edu-item">
+              <span class="edu-year">Ph.D.</span>
+              <div class="edu-body">
+                <strong>Ph.D. in Biotechnology</strong>
+                <span>
+                  <a href="https://www.ntu.edu.tw/" target="_blank">National Taiwan University</a>,
+                  Taiwan
+                </span>
+                <span>
+                  Research conducted at
+                  <a href="https://abrc.sinica.edu.tw/" target="_blank">ABRC, Academia Sinica</a>
+                </span>
+              </div>
+            </li>
+
+            <li class="edu-item">
+              <span class="edu-year">M.Sc.</span>
+              <div class="edu-body">
+                <strong>M.Sc. in Genetics and Plant Breeding</strong>
+                <span>
+                  College of Post Graduate Studies in Agricultural Sciences,
+                  Central Agricultural University, Meghalaya, India
+                </span>
+              </div>
+            </li>
+
+            <li class="edu-item">
+              <span class="edu-year">B.Sc.</span>
+              <div class="edu-body">
+                <strong>B.Sc. in Agriculture</strong>
+                <span>
+                  Assam Agricultural University, Jorhat, India
+                </span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </main>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="fade-up delay-5">
+      <span>© <span id="year"></span> Puyam Tondonba Singh</span>
+      <span>Molecular Plant Biology · Plant Pathology · Functional Genomics</span>
+    </footer>
+
+  </div>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
@@ -103,4 +734,3 @@
 
 </body>
 </html>
-
