@@ -1,76 +1,654 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Research | Tondonba Puyam</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Research — Tondonba Puyam</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --brown: #4a2f24;
+      --brown-mid: #6f4632;
+      --brown-light: #9a6045;
+      --terracotta: #b86b4b;
+      --gold: #c9954e;
+      --gold-light: #e4bd79;
+      --cream: #fbf4ea;
+      --cream-dark: #f1e2cf;
+      --ink: #221b17;
+      --ink-soft: #433833;
+      --ink-muted: #7a6a61;
+      --border: rgba(74, 47, 36, 0.18);
+      --white: #ffffff;
+      --tag-bg: rgba(184, 107, 75, 0.10);
+      --shadow: 0 4px 32px rgba(74, 47, 36, 0.12);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--cream);
+      color: var(--ink);
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 1.08rem;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-up {
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards;
+    }
+
+    .delay-1 { animation-delay: 0.10s; }
+    .delay-2 { animation-delay: 0.22s; }
+    .delay-3 { animation-delay: 0.34s; }
+    .delay-4 { animation-delay: 0.46s; }
+    .delay-5 { animation-delay: 0.58s; }
+
+    .topbar {
+      background: linear-gradient(90deg, var(--brown), var(--terracotta), var(--gold));
+      height: 5px;
+      width: 100%;
+    }
+
+    .wrapper {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 0 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.38rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--brown);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.98rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--brown);
+    }
+
+    .nav-links a.active {
+      border-bottom: 1.5px solid var(--terracotta);
+      padding-bottom: 2px;
+    }
+
+    .page-header {
+      margin: 44px 0 40px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 600;
+      color: var(--brown);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+
+    .page-header h1 em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--brown-light);
+    }
+
+    .page-header .lead {
+      margin-top: 10px;
+      font-size: 1.05rem;
+      color: var(--ink-muted);
+      max-width: 780px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 290px;
+      gap: 56px;
+      align-items: start;
+      margin-bottom: 60px;
+    }
+
+    .section {
+      margin-bottom: 48px;
+    }
+
+    .section-label {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(184, 107, 75, 0.45), transparent);
+    }
+
+    .statement-text {
+      font-size: 1.08rem;
+      color: var(--ink-soft);
+      line-height: 1.88;
+      margin-bottom: 14px;
+    }
+
+    .statement-text strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .statement-text a {
+      color: var(--brown-light);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(154, 96, 69, 0.45);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .statement-text a:hover {
+      color: var(--brown);
+      border-color: var(--brown);
+      border-style: solid;
+    }
+
+    .method-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 4px 13px;
+      background: var(--tag-bg);
+      border: 1px solid rgba(184, 107, 75, 0.18);
+      border-radius: 2px;
+      font-size: 0.87rem;
+      color: var(--brown);
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+
+    .tag.primary {
+      background: var(--brown);
+      color: var(--cream);
+      border-color: var(--brown);
+    }
+
+    .project-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--brown);
+      border-radius: 3px;
+      padding: 20px 22px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 12px rgba(74, 47, 36, 0.06);
+      transition: box-shadow 0.2s, border-left-color 0.2s;
+    }
+
+    .project-card:hover {
+      box-shadow: 0 4px 24px rgba(74, 47, 36, 0.13);
+      border-left-color: var(--gold);
+    }
+
+    .project-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--terracotta);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .project-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.18rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .project-title em {
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .project-text {
+      font-size: 0.98rem;
+      color: var(--ink-soft);
+      line-height: 1.65;
+    }
+
+    .thesis-block {
+      background: linear-gradient(135deg, var(--brown) 0%, var(--brown-mid) 100%);
+      border-radius: 4px;
+      padding: 24px 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .thesis-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 10px;
+    }
+
+    .thesis-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.22rem;
+      font-weight: 500;
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+
+    .thesis-note {
+      font-size: 0.88rem;
+      color: rgba(251, 244, 234, 0.72);
+    }
+
+    .ongoing-list {
+      list-style: none;
+    }
+
+    .ongoing-item {
+      display: flex;
+      gap: 14px;
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(74, 47, 36, 0.08);
+      font-size: 1rem;
+      color: var(--ink-soft);
+      line-height: 1.55;
+    }
+
+    .ongoing-item:last-child {
+      border-bottom: none;
+    }
+
+    .ongoing-item::before {
+      content: '';
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--terracotta);
+      margin-top: 9px;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .sidebar-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(74, 47, 36, 0.07);
+    }
+
+    .sidebar-card-header {
+      background: var(--brown);
+      padding: 9px 16px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+
+    .sidebar-card-body {
+      padding: 14px 16px;
+      font-size: 0.96rem;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 0 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+    }
+
+    footer a {
+      color: var(--brown-light);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 900px) {
+      .wrapper {
+        padding: 0 22px;
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .sidebar {
+        position: static;
+      }
+
+      .page-header h1 {
+        font-size: 2.35rem;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: center;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 6px;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <header>
-    <div class="nav-container">
-      <div class="logo">Tondonba Puyam</div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="research.html">Research</a>
-        <a href="publications.html">Publications</a>
-        <a href="conferences.html">Conferences</a>
-        <a href="awards.html">Awards</a>
-        <a href="about.html">About Me</a>
-      </nav>
-    </div>
-  </header>
 
-  <main>
-    <section>
-      <h2>Current Research</h2>
-      <p>
-        The global cultivation of Cavendish bananas is severely threatened by Fusarium wilt caused by the soil-borne
-        fungus <em>Fusarium oxysporum</em> f. sp. <em>cubense</em> tropical race 4 (TR4). Although breeding TR4-resistant
-        cultivars is constrained by triploidy and sterility, the Taiwan Banana Research Institute (TBRI) has developed
-        somaclonal variants that exhibit stable resistance to TR4. However, the precise mutations and molecular mechanisms
-        underlying this resistance remain unclear.
-      </p>
-      <p>
-        My research aims to elucidate the genetic basis of TR4 resistance in these TBRI somaclonal variants by 
-        identifying causal somatic mutations and key regulatory genes. We discovered that highly resistant variants share 
-        common chromosomal deletions that reduce gene copy number and expression. Within these deleted regions, we 
-        identified candidate susceptibility genes belonging to the <em>Autoinhibited Ca<sup>2+</sup>-ATPase</em> 
-        (<em>ACA</em>) family.
-      </p>
-      <p>
-        Using a virus-induced gene silencing (VIGS) system, we demonstrated that silencing these 
-        <em>ACA</em> genes in susceptible bananas elevates salicylic acid (SA) marker gene expression and attenuates 
-        TR4 disease symptoms. These findings suggest that reduced <em>ACA</em> expression enhances SA-mediated immunity 
-        and contributes to durable resistance to Fusarium wilt.
-      </p>
-      <p>
-        Ongoing work includes the development of CRISPR-edited lines targeting these <em>ACA</em> genes for stable 
-        modification and the generation of transgenic <em>Arabidopsis</em> lines to investigate their subcellular 
-        localization. Future directions will test whether silencing or knockout of these genes in other susceptible 
-        banana cultivars can similarly confer resistance to TR4.
-      </p>
-    </section>
+  <div class="topbar"></div>
 
-    <section>
-      <h2>Research Interests</h2>
-      <ul>
-        <li>Molecular basis of disease resistance in crops</li>
-        <li><em>Fusarium</em> wilt TR4 resistance mechanisms in banana</li>
-        <li>Plant&ndash;microbe interactions and host immune signaling</li>
-        <li>Functional genomics, transcriptomics, and structural variation</li>
-        <li>Genome editing and marker development for breeding</li>
+  <div class="wrapper">
+
+    <!-- NAV -->
+    <nav class="fade-up delay-1">
+      <a href="index.html" class="nav-brand">Tondonba Puyam</a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html" class="active">Research</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="conferences.html">Conferences</a></li>
+        <li><a href="awards.html">Awards</a></li>
+        <li><a href="about.html">About Me</a></li>
       </ul>
-    </section>
-  </main>
+    </nav>
 
-  <footer>
-    Updated 2025
-  </footer>
+    <!-- PAGE HEADER -->
+    <div class="page-header fade-up delay-2">
+      <h1><em>Research</em></h1>
+      <p class="lead">
+        Molecular mechanisms of banana Fusarium wilt TR4 resistance,
+        plant immunity, functional genomics, and host&ndash;pathogen interactions.
+      </p>
+    </div>
+
+    <div class="content-grid">
+
+      <!-- MAIN CONTENT -->
+      <div>
+
+        <!-- RESEARCH STATEMENT -->
+        <section class="section fade-up delay-3">
+          <div class="section-label">Current Research</div>
+
+          <p class="statement-text">
+            My research focuses on the molecular basis of resistance to
+            <strong>Fusarium wilt tropical race 4</strong> in Cavendish banana.
+            The global cultivation of Cavendish bananas is severely threatened by
+            the soil-borne fungus <em>Fusarium oxysporum</em> f. sp.
+            <em>cubense</em> tropical race 4 (TR4). Because conventional breeding
+            is limited by banana triploidy and sterility, resistant somaclonal
+            variants provide an important route for understanding and improving
+            disease resistance.
+          </p>
+
+          <p class="statement-text">
+            I investigate TR4-resistant somaclonal variants developed by the
+            Taiwan Banana Research Institute (TBRI), with the aim of identifying
+            causal somatic mutations and key regulatory genes. My work shows that
+            highly resistant variants share common chromosomal deletions that
+            reduce gene copy number and expression. Within these deleted regions,
+            candidate susceptibility genes from the
+            <em>Autoinhibited Ca<sup>2+</sup>-ATPase</em> (<em>ACA</em>) family
+            were identified as important regulators of banana immunity.
+          </p>
+
+          <p class="statement-text">
+            Using a virus-induced gene silencing (VIGS) system, we demonstrated
+            that silencing selected <em>ACA</em> genes in susceptible bananas
+            elevates salicylic acid (SA) marker gene expression and reduces TR4
+            disease symptoms. These results suggest that reduced <em>ACA</em>
+            expression enhances SA-mediated immunity and contributes to durable
+            Fusarium wilt resistance.
+          </p>
+
+          <div class="method-tags">
+            <span class="tag primary">Fusarium Wilt TR4</span>
+            <span class="tag primary">Banana Disease Resistance</span>
+            <span class="tag">Somaclonal Variation</span>
+            <span class="tag">Chromosomal Deletions</span>
+            <span class="tag">ACA Genes</span>
+            <span class="tag">VIGS</span>
+            <span class="tag">Salicylic Acid Immunity</span>
+            <span class="tag">Functional Genomics</span>
+          </div>
+        </section>
+
+        <!-- PROJECT CARDS -->
+        <section class="section fade-up delay-4">
+          <div class="section-label">Research Themes</div>
+
+          <div class="project-card">
+            <div class="project-number">Theme 01</div>
+            <div class="project-title">
+              Genetic basis of TR4 resistance in Cavendish banana
+            </div>
+            <p class="project-text">
+              This work examines how somatic mutations, structural variation,
+              and chromosomal deletions contribute to stable resistance in
+              Cavendish banana somaclonal variants.
+            </p>
+          </div>
+
+          <div class="project-card">
+            <div class="project-number">Theme 02</div>
+            <div class="project-title">
+              Susceptibility gene discovery and immune regulation
+            </div>
+            <p class="project-text">
+              Candidate susceptibility genes, including members of the
+              <em>ACA</em> gene family, are studied to understand how reduced
+              expression can activate defense responses and limit disease
+              progression.
+            </p>
+          </div>
+
+          <div class="project-card">
+            <div class="project-number">Theme 03</div>
+            <div class="project-title">
+              Functional validation using VIGS and genome editing
+            </div>
+            <p class="project-text">
+              Functional tools such as VIGS and CRISPR-based approaches are used
+              to test whether candidate genes directly regulate TR4 resistance
+              and can be applied in future banana improvement.
+            </p>
+          </div>
+        </section>
+
+        <!-- ONGOING WORK -->
+        <section class="section fade-up delay-5">
+          <div class="section-label">Ongoing Work</div>
+
+          <ul class="ongoing-list">
+            <li class="ongoing-item">
+              Development of CRISPR-edited banana lines targeting candidate
+              <em>ACA</em> genes for stable modification.
+            </li>
+
+            <li class="ongoing-item">
+              Generation of transgenic <em>Arabidopsis</em> lines to investigate
+              the subcellular localization and biological roles of candidate genes.
+            </li>
+
+            <li class="ongoing-item">
+              Functional testing of whether silencing or knockout of candidate
+              genes can confer resistance in other susceptible banana cultivars.
+            </li>
+
+            <li class="ongoing-item">
+              Integration of genomics, transcriptomics, and molecular assays to
+              identify disease-resistance mechanisms in crop plants.
+            </li>
+          </ul>
+        </section>
+
+        <!-- SUMMARY BLOCK -->
+        <section class="section fade-up delay-5">
+          <div class="section-label">Research Direction</div>
+
+          <div class="thesis-block">
+            <div class="thesis-label">Long-Term Research Goal</div>
+
+            <div class="thesis-title">
+              To understand how structural genomic variation and immune
+              regulatory genes can be used to develop durable resistance against
+              destructive crop diseases.
+            </div>
+
+            <div class="thesis-note">
+              <i class="fas fa-seedling" style="margin-right:6px;"></i>
+              Focus areas include banana Fusarium wilt TR4, plant&ndash;microbe
+              interactions, molecular breeding, functional genomics, and genome editing.
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar fade-up delay-3">
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-header">Research Areas</div>
+          <div class="sidebar-card-body">
+            Molecular plant biology, plant pathology, functional genomics,
+            genome editing, host&ndash;pathogen interactions, and disease-resistance breeding.
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-header">Model System</div>
+          <div class="sidebar-card-body">
+            Cavendish banana somaclonal variants, TR4-resistant lines,
+            susceptible banana cultivars, and experimental plant systems such as
+            <em>Arabidopsis</em>.
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-header">Methods</div>
+          <div class="sidebar-card-body">
+            Genomics, transcriptomics, virus-induced gene silencing,
+            CRISPR genome editing, gene expression analysis, and disease assays.
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="fade-up delay-5">
+      <span>© <span id="year"></span> Puyam Tondonba Singh</span>
+      <span>Molecular Plant Biology · Plant Pathology · Functional Genomics</span>
+    </footer>
+
+  </div>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+
 </body>
 </html>
